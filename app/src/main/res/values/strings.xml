@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Challenge</string>
+    <string name="hot_key_word">Từ khoá hot</string>
+    <string name="no_hot_key_word">Không có từ khoá hot</string>
+</resources>

@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.tiki.challenge"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        debug {
+            def BASE_URL = "https://raw.githubusercontent.com/"
+            def BASE_API_URL = BASE_URL + "tikivn/android-home-test/"
+            buildConfigField "String", "API_VERSION", '"v2/"'
+            buildConfigField "String", "BASE_URL", "\"${BASE_URL}\""
+            buildConfigField "String", "BASE_API_URL", "\"${BASE_API_URL}\""
+        }
+        release {
+            def BASE_URL = "https://raw.githubusercontent.com/"
+            def BASE_API_URL = BASE_URL + "tikivn/android-home-test/"
+            buildConfigField "String", "API_VERSION", '"v2/"'
+            buildConfigField "String", "BASE_URL", "\"${BASE_URL}\""
+            buildConfigField "String", "BASE_API_URL", "\"${BASE_API_URL}\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Architecture components
+    implementation deps.navigation.runtime
+    implementation deps.navigation.ui
+    implementation deps.lifecycle.extensions
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
+    //Retrofit
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.adapter_rxjava
+    implementation deps.retrofit.gson
+    implementation deps.okhttp_logging_interceptor
+
+    implementation deps.rxjava2
+    implementation deps.rx_android
+    implementation deps.kotlin.stdlib
+
+    // Support libraries
+    implementation deps.support.app_compat
+    implementation deps.support.core_ktx
+    implementation deps.constraint_layout
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.design_material
+
+    implementation 'com.github.duanhong169:drawabletoolbox:1.0.7'
+}

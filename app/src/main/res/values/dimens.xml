@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="padding_text_width">15dp</dimen>
+
+    <dimen name="card_view_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="spacing_5">5dp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
+
+    <dimen name="text_size_large">19sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+</resources>
