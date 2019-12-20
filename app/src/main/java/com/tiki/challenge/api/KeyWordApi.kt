@@ -4,10 +4,9 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 
-interface SearchApi {
+interface KeyWordApi {
     companion object {
         private const val KEYWORDS = "keywords.json"
-        private const val REQUESTS = "requests/"
     }
 
     @GET(KEYWORDS)

@@ -19,8 +19,8 @@ import java.util.concurrent.TimeUnit
 
 
 class ServiceFactory {
-    fun provideSearchApi(): SearchApi {
-        return provideRetrofit(BuildConfig.BASE_API_URL + BuildConfig.API_VERSION).create(SearchApi::class.java)
+    fun provideSearchApi(): KeyWordApi {
+        return provideRetrofit(BuildConfig.BASE_API_URL + BuildConfig.API_VERSION).create(KeyWordApi::class.java)
     }
 
     private fun provideRetrofit(baseUrl: String): Retrofit {

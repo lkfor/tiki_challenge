@@ -2,14 +2,14 @@ package com.tiki.challenge.repository
 
 import android.annotation.SuppressLint
 import com.tiki.challenge.api.DataListener
-import com.tiki.challenge.api.SearchApi
+import com.tiki.challenge.api.KeyWordApi
 import com.tiki.challenge.api.ServiceFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class SearchRepository {
+class KeyWordRepository {
     private var factory: ServiceFactory = ServiceFactory()
-    private var api: SearchApi =
+    private var api: KeyWordApi =
         factory.provideSearchApi()
 
     @SuppressLint("CheckResult")

@@ -4,14 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tiki.challenge.api.DataListener
 import com.tiki.challenge.model.KeyWordModel
-import com.tiki.challenge.repository.SearchRepository
+import com.tiki.challenge.repository.KeyWordRepository
 
 class KeyWordViewModel(var repositoryListener: RepositoryListener?) : ViewModel() {
     interface RepositoryListener {
         fun onKeyWordsChange(keywords: List<KeyWordModel>)
     }
 
-    private val searchRepository = SearchRepository()
+    private val searchRepository = KeyWordRepository()
     var isLoadingKeyWords: MutableLiveData<Boolean> = MutableLiveData(true)
 
     fun fetchKeyWords() {
@@ -20,11 +20,10 @@ class KeyWordViewModel(var repositoryListener: RepositoryListener?) : ViewModel(
                 repositoryListener?.onKeyWordsChange(ArrayList())
             }
 
-            override fun onSuccess(value: Any?) {
+            override fun onSuccess(values: List<String>) {
                 try {
-                    val data: List<String> = value as List<String>
                     val result = ArrayList<KeyWordModel>()
-                    for (item in data) {
+                    for (item in values) {
                         result.add(KeyWordModel(item))
                     }
                     repositoryListener?.onKeyWordsChange(result)
