@@ -1,7 +1,6 @@
 package com.tiki.challenge
 
 import android.app.Application
-import com.tiki.challenge.api.ApiRepository
 
 class MainApplication : Application() {
 
@@ -14,13 +13,5 @@ class MainApplication : Application() {
     companion object {
         private var mAppExecutors: AppExecutors? = null
         var instance: MainApplication? = null
-        private var sApiRepository: ApiRepository? = null
-
-        fun getApiRepository(): ApiRepository {
-            if (sApiRepository == null) {
-                sApiRepository = ApiRepository.getInstance()
-            }
-            return sApiRepository!!
-        }
     }
 }
