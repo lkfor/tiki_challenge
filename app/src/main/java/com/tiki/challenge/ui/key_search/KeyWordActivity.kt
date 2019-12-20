@@ -8,33 +8,25 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tiki.challenge.R
-import com.tiki.challenge.databinding.ActivityKeySearchBinding
-import com.tiki.challenge.model.KeySearchModel
+import com.tiki.challenge.databinding.ActivityKeyWordBinding
+import com.tiki.challenge.model.KeyWordModel
 import com.tiki.challenge.utils.SpacingDecoration
 
-class KeySearchActivity() : AppCompatActivity(), KeyWordViewModel.RepositoryListener {
-    override fun onKeyWordsChange(keywords: List<KeySearchModel>) {
-        this.keywords.clear()
-        this.keywords.addAll(keywords)
-        keyWordAdapter.notifyDataSetChanged()
-        binding.tvEmptyData.visibility = if(this.keywords.isNullOrEmpty()) View.VISIBLE else View.GONE
-    }
-
+class KeyWordActivity : AppCompatActivity(), KeyWordViewModel.RepositoryListener {
     private lateinit var keyWordViewModel: KeyWordViewModel
-    private lateinit var binding: ActivityKeySearchBinding
+    private lateinit var binding: ActivityKeyWordBinding
 
     private lateinit var keyWordAdapter: KeyWordAdapter
-    private val keywords = ArrayList<KeySearchModel>()
+    private val keywords = ArrayList<KeyWordModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_key_search)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_key_word)
         keyWordViewModel = KeyWordViewModel(this)
         binding.viewModel = keyWordViewModel
         binding.lifecycleOwner = this
         initView()
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -61,10 +53,16 @@ class KeySearchActivity() : AppCompatActivity(), KeyWordViewModel.RepositoryList
         })
     }
 
-
     private fun initData() {
         keyWordViewModel.fetchKeyWords()
     }
 
+    override fun onKeyWordsChange(keywords: List<KeyWordModel>) {
+        this.keywords.clear()
+        this.keywords.addAll(keywords)
+        keyWordAdapter.notifyDataSetChanged()
+        binding.tvEmptyData.visibility =
+            if (this.keywords.isNullOrEmpty()) View.VISIBLE else View.GONE
+    }
 
 }

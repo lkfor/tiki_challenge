@@ -3,12 +3,12 @@ package com.tiki.challenge.ui.key_search
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tiki.challenge.api.DataListener
-import com.tiki.challenge.model.KeySearchModel
+import com.tiki.challenge.model.KeyWordModel
 import com.tiki.challenge.repository.SearchRepository
 
 class KeyWordViewModel(var repositoryListener: RepositoryListener?) : ViewModel() {
     interface RepositoryListener {
-        fun onKeyWordsChange(keywords: List<KeySearchModel>)
+        fun onKeyWordsChange(keywords: List<KeyWordModel>)
     }
 
     private val searchRepository = SearchRepository()
@@ -23,11 +23,11 @@ class KeyWordViewModel(var repositoryListener: RepositoryListener?) : ViewModel(
             override fun onSuccess(value: Any?) {
                 try {
                     val data: List<String> = value as List<String>
-                    val result = ArrayList<KeySearchModel>()
+                    val result = ArrayList<KeyWordModel>()
                     for (item in data) {
-                        result.add(KeySearchModel(item))
+                        result.add(KeyWordModel(item))
                     }
-                    repositoryListener?.onKeyWordsChange(ArrayList())
+                    repositoryListener?.onKeyWordsChange(result)
                 } catch (ex: Exception) {
                     ex.printStackTrace()
                     repositoryListener?.onKeyWordsChange(ArrayList())
@@ -41,7 +41,6 @@ class KeyWordViewModel(var repositoryListener: RepositoryListener?) : ViewModel(
             override fun onTerminateApi(loading: Boolean) {
                 isLoadingKeyWords.value = false
             }
-
         })
     }
 }

@@ -1,6 +1,6 @@
 package com.tiki.challenge.api
 
-interface DataListener{
+interface DataListener {
     fun onError(message: String?)
     fun onSuccess(value: Any?)
     fun onStartCallApi(loading: Boolean)

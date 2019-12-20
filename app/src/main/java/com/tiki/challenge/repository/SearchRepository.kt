@@ -13,7 +13,7 @@ class SearchRepository {
         factory.provideSearchApi()
 
     @SuppressLint("CheckResult")
-    fun getKeyWords( dataListener: DataListener) {
+    fun getKeyWords(dataListener: DataListener) {
         api.getKeyWords()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

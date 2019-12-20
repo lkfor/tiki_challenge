@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tiki.challenge.R
-import com.tiki.challenge.model.KeySearchModel
+import com.tiki.challenge.model.KeyWordModel
 import com.tiki.challenge.utils.DrawableUtils
 import com.tiki.challenge.utils.StringUtils
 import kotlinx.android.synthetic.main.item_keyword.view.*
 
-class KeyWordAdapter(private var keywords: List<KeySearchModel>) :
+class KeyWordAdapter(private var keywords: List<KeyWordModel>) :
     RecyclerView.Adapter<KeyWordAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -68,7 +68,7 @@ class SpacingDecoration : ItemDecoration {
                     if (position == itemCount - 1) if (mIsExceptLast) 0 else spacing else spacing
             }
             GRID -> if (layoutManager is GridLayoutManager) {
-                 val halfSpace = spacing / 2
+                val halfSpace = spacing / 2
                 if (parent.paddingLeft != halfSpace) {
                     parent.setPadding(halfSpace, halfSpace, halfSpace, halfSpace)
                     parent.clipToPadding = false
